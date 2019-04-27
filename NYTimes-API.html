@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <title>NYTimes Search</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4"> <i class="far fa-newspaper"></i> New York Times Search</h1>
+      </div>
+    </div>
+    <div class="row">
+      <!-- CARD START -->
+      <div class="card">
+        <h5 class="card-header"> <i class="far fa-newspaper"></i> Search Parameter</h5>
+        <div class="col">
+          <!-- This is the first div for form -->
+          <div class="form-group">
+            <!-- This is the first div for form -->
+            <label for="searchTerm">Search Term</label>
+            <!-- this is the id keyword search -->
+            <input type="text" class="form-control" id="searchItem">
+
+            <label for="recordNumber">Number of records to retrieve </label>
+            <select class="form-control" id="numberDisplay">
+              <!-- grab the id , then add the value , backend stuff-->
+              <option>1</option>
+              <option>5</option>
+              <option>10</option>
+            </select>
+            <!-- YEAR START YEAR-->
+            <label for="searchStartYear">Start Year (Optional)</label>
+            <input type="number" class="form-control" id="searchStartYear">
+            <!-- YEAR START YEAR-->
+
+            <!-- YEAR END YEAR-->
+            <label for="searchStartEnd">End Year (Optional)</label>
+            <input type="number" class="form-control" id="searchEndYear">
+            <!-- YEAR END YEAR-->
+            <button type="submit" id="submit" class="btn btn-light"> <i class="fas fa-search"></i>Search</button>
+
+            <button type="submit" id="clear" class="btn btn-light"> <i class="fas fa-trash-alt"></i>Clear</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+
+    <div class="row">
+      <!-- put new card here -->
+      <div class="card">
+        <h5 class="card-header"> <i class="far fa-newspaper"></i> Top Articles</h5>
+        <div class="col">
+          <div id="results">
+            <h1>Article 1</h1>
+            <p>article text fdal;fjadslkjfsdlk;jaf;lsdkj</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+
+    <div class="card-body">
+      <footer class="card-footer text-muted">Made with lots and lots of love <i class="fas fa-heart"></i> </footer>
+    </div>
+  
+<script>
+
+var APIkey = "493d5df0-b8e4-46c6-9a73-aad7be18f4ab" ;
+   if (searchStartYear === '' && searchEndYear === '') {
+      queryURl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&facet=true&fl=&q=" + searchItem + "&api-key=" + APIkey;
+    } else if(searchStartYear !== '' && searchEndYear === '') {
+      queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=" + begin_date + "&facet=true&fl=&q=" + searchItem + "&api-key=" + APIkey;
+    } else if(searchStartYear === '' && searchEndYear != '') {
+      queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?end_date=" + searchEndYear + "&facet=true&fl=&q=" + searchItem + "&api-key=" + APIkey;
+    } else {
+      queryURl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=" + searchStartYear + "&end_date=" + searchEndYear + "&facet=true&fl=&q=" + searchItem + "&api-key=" + APIkey;
+    }
+</script>
+
+</body>
+
+</html>

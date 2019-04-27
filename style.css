@@ -1,0 +1,20 @@
+.jumbotron  { 
+  background-color:#20325A;
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.card-footer {
+    text-align: center;
+    width: 100%;
+}
